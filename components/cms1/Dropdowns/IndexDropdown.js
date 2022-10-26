@@ -10,6 +10,7 @@ const IndexDropdown = () => {
   const openDropdownPopover = () => {
     createPopper(btnDropdownRef.current, popoverDropdownRef.current, {
       placement: "bottom-start",
+      // placement: "left"
     });
     setDropdownPopoverShow(true);
   };
@@ -25,14 +26,14 @@ const IndexDropdown = () => {
         onClick={(e) => {
           e.preventDefault();
           dropdownPopoverShow ? closeDropdownPopover() : openDropdownPopover();
-        }}
+        }} 
       >
         Demo Pages
       </a>
       <div
         ref={popoverDropdownRef}
         className={
-          (dropdownPopoverShow ? "block " : "hidden ") +
+          (dropdownPopoverShow ? " " : "hidden ") +
           "bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
         }
       >
@@ -53,7 +54,7 @@ const IndexDropdown = () => {
             Dashboard
           </a>
         </Link>
-        <Link href="/">
+        <Link href="/admin/dashboard">
           <a
             href="#pablo"
             className={
@@ -73,7 +74,7 @@ const IndexDropdown = () => {
             Tables
           </a>
         </Link>
-        <Link href="/">
+        <Link href="/admin/dashboard">
           <a
             href="#pablo"
             className={
@@ -91,7 +92,7 @@ const IndexDropdown = () => {
         >
           Auth Layout
         </span>
-        <Link href="/">
+        <Link href="/admin/dashboard">
           <a
             href="#pablo"
             className={
@@ -101,7 +102,7 @@ const IndexDropdown = () => {
             Login
           </a>
         </Link>
-        <Link href="/">
+        <Link href="/admin/dashboard">
           <a
             href="#pablo"
             className={
@@ -119,7 +120,7 @@ const IndexDropdown = () => {
         >
           No Layout
         </span>
-        <Link href="/">
+        <Link href="/admin/dashboard">
           <a
             href="#pablo"
             className={
@@ -129,7 +130,7 @@ const IndexDropdown = () => {
             Landing
           </a>
         </Link>
-        <Link href="/">
+        <Link href="/admin/dashboard">
           <a
             href="#pablo"
             className={

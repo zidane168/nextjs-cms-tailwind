@@ -8,6 +8,8 @@ module.exports = {
     extend: {
       colors: {
         'vilh-blue': '#00F',
+        'highlight': '#888bf7',
+        'theme':  '#00bfff',
       }
     },
   },

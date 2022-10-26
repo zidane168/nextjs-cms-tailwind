@@ -78,7 +78,7 @@ export async function getStaticProps( ) {
   // ↓add  
 }
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: any) {
  
   const Layout = Component.layout || (({ children }) => <>{children}</>);
   // const Layout = Component.layout || <> </>;
