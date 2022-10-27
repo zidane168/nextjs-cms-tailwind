@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useTransition } from "react";
 import ReactDOM from "react-dom";
 import App, { AppProps } from "next/app";
 import Head from "next/head";
@@ -65,14 +65,8 @@ import "../styles/tailwind.css";
 //     );
 //   }
 // }
-
-
-
-
-
-
-import '../styles/globals.css'
-
+ 
+import '../styles/globals.css' 
 
 export async function getStaticProps( ) {
   // ↓add  
@@ -83,7 +77,6 @@ function MyApp({ Component, pageProps }: any) {
   const Layout = Component.layout || (({ children }) => <>{children}</>);
   // const Layout = Component.layout || <> </>;
   
-
   return (
     <React.Fragment>
       <Head>
