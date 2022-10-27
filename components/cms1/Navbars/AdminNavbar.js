@@ -3,12 +3,12 @@ import React from "react";
 import UserDropdown from "../Dropdowns/UserDropdown.js";
 import Link from "next/link";
 
-//import useTrans from '../../pages/hooks/useTrans'
 import useTrans from '../../../pages/hooks/useTrans'
+ 
 
 export default function Navbar() {
 
-  const trans = useTrans()
+  const { language, asPath, locale }  = useTrans() // asPath is current URL, 
   return (
     <>
       {/* Navbar */}
@@ -20,7 +20,7 @@ export default function Navbar() {
             href="#pablo"
             onClick={(e) => e.preventDefault()}
           >
-            { trans.home.title  }
+            { language.home.title  }
           </a>
           {/* Form */}
           {/* <form className="md:flex hidden flex-row flex-wrap items-center lg:ml-auto mr-3">
@@ -38,24 +38,26 @@ export default function Navbar() {
 
           <div className="md:flex hidden flex-row flex-wrap items-center lg:ml-auto mr-3 space-x-2">
             <div>
-              { trans.home.content }
+              { language.home.content }
             </div>
 
             <div className="text-white">
               <Link
-                className="text-white relative flex w-full flex-wrap items-stretch"
-                href={`zho/dashboard`}
+                active = { locale === "zho" }
+                className="active:bg-orange-100  relative flex w-full flex-wrap items-stretch"
+                href={ asPath }  locale="zho" 
               >
-                Chinese
+                中文 🇭🇰
               </Link>
             </div>
 
             <div className="text-white">
               <Link
-                className="relative flex w-full flex-wrap items-stretch"
-                href={`admin/dashboard`}
+               active = { locale === "en" }
+                className="active:bg-orange-100 relative flex w-full flex-wrap items-stretch"
+                href={ asPath }  locale="en"
               >
-                English
+                English 🇺🇸
               </Link>
             </div>
           </div>

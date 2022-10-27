@@ -1,14 +1,7 @@
-import React, { FC, useEffect, useTransition } from "react";
-import ReactDOM from "react-dom";
-import App, { AppProps } from "next/app";
-import Head from "next/head";
-import Router from "next/router";
-import { NextPageContext } from 'next';
-
-import PageChange from "../components/cms1/PageChange/PageChange.js";
-
+import React  from "react"; 
+import Head from "next/head"; 
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "../styles/tailwind.css";
+import "../styles/tailwind-2.0.4.css";
 
 // // Router.events.on("routeChangeStart", (url) => {
 // //   console.log(`Loading: ${url}`);

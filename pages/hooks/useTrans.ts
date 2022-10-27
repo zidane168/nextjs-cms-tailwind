@@ -3,9 +3,11 @@ import en from '../../public/lang/en.js'
 import zho from '../../public/lang/zho.js'
 
 const useTrans = () => {
-    const { locale } = useRouter() 
-    const trans = locale === 'zho' ? zho : en 
-    return trans
+    const { asPath, locale } = useRouter() 
+    const language = locale === 'zho' ? zho : en 
+
+    console.log(asPath)
+    return { language, asPath, locale }
 }
 
 export default useTrans
