@@ -40,6 +40,7 @@ export default function Members( ) {
             <tbody>
              
               <tr >
+                
                 <th className=" px-6 align-middle text-xs whitespace-nowrap p-4 text-left flex items-center">
                   <img
                     src="/img/cms1/sketch.jpg"
@@ -94,10 +95,10 @@ export default function Members( ) {
                   </div>
                 </td>
                 <td className="  align-middle text-xs whitespace-nowrap p-4 space-x-1"> 
-                    <a className="bg-sky-500 text-white p-2 rounded hover:bg-sky-700" href='/admin/member/edit/:slug' > 
+                    <a className="bg-sky-500 text-white p-2 rounded hover:bg-sky-700" href='/admin/member/view/1' > 
                       <i className="fa-regular fa-eye"></i>  
                     </a> 
-                  <a className="bg-yellow-500 text-white p-2 rounded hover:bg-yellow-600"> <i className="fa-solid fa-pen-to-square"></i> </a>
+                  <a className="bg-yellow-500 text-white p-2 rounded hover:bg-yellow-600" href='/admin/member/edit/1'> <i className="fa-solid fa-pen-to-square"></i> </a>
                   <a className="bg-red-500  text-white p-2 rounded hover:bg-red-700"> <i className="fa-solid fa-trash"></i> </a>
                 </td>
               </tr>

@@ -4,8 +4,9 @@ import zho from '../../public/lang/zho.js'
 
 const useTrans = () => {
     const { asPath, locale } = useRouter() 
+    const router = useRouter() 
     const language = locale === 'zho' ? zho : en 
-    return { language, asPath, locale }
+    return { language, asPath, locale, router }
 }
 
 export default useTrans
