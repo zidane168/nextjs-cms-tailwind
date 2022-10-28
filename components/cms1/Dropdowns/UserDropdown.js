@@ -22,10 +22,11 @@ const UserDropdown = () => {
         className="text-blueGray-500 block"
         href="#pablo"
         ref={btnDropdownRef}
-        onClick={(e) => {
+        onClick = {(e) => {
           e.preventDefault();
           dropdownPopoverShow ? closeDropdownPopover() : openDropdownPopover();
-        }} 
+        }}
+        
       >
         <div className="items-center flex">
           <span className="w-12 h-12 text-sm text-white bg-blueGray-200 inline-flex items-center justify-center rounded-full">

@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    th.header {
+        @apply bg-theme text-white px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap text-left 
+    }
+
+    tbody tr {
+        @apply border-l-2 border-r-2 border-b-2
+         
+    }
+}

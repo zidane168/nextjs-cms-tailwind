@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/500.js", "pages/404.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/500.js", "pages/404.js", "components/cms1/Navbars/AdminNavbar.js"],
   "exclude": ["node_modules"]
 }
