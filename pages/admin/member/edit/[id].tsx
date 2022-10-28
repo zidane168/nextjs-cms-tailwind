@@ -15,8 +15,36 @@ export default function MembersView() {
   const [ dropDown, setDropDown ] = useState(false);
   const [ dropDownButtonText, setDropDownButtonText] = useState("");
 
+  const [ dropDownWithCheckBox, setDropDownWithCheckBox ] = useState(false);
+  const [ dropDownWithCheckBoxArrayText, setDropDownWithCheckBoxArrayText ] = useState([]);
+
   const { language, router } = useTrans();
   const { id } = router.query; 
+  
+
+  const onHandleChange = (e) => {
+
+    let isChecked = e.target.checked
+    let value = e.target.value;
+
+ 
+    if (isChecked) {
+      setDropDownWithCheckBoxArrayText(dropDownWithCheckBoxArrayText.concat(value)) 
+
+    } else {
+ 
+
+      let array = [ ...dropDownWithCheckBoxArrayText ]
+      let index = array.indexOf(value)
+
+      if (index != -1) {
+        array.splice(index, 1)
+        setDropDownWithCheckBoxArrayText(array) 
+      } 
+    }
+    
+    console.log(dropDownWithCheckBoxArrayText)
+  }
 
 
   return (
@@ -177,7 +205,7 @@ export default function MembersView() {
           </div>
           {/* end checkbox */}
 
-          <label
+          {/* <label
             for="countries"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
           >
@@ -192,7 +220,7 @@ export default function MembersView() {
             <option value="CA">Canada</option>
             <option value="FR">France</option>
             <option value="DE">Germany</option>
-          </select>
+          </select> */}
 
           <div className=" m-2 inline-flex rounded-md shadow-sm">
             <a
@@ -231,6 +259,30 @@ export default function MembersView() {
             </ul>
           </div>
           
+
+          <div className="btn-group mt-10 " id="dropdownbtn">
+            <button type="button" className="flex items-center shadow px-4 py-2 bg-white text-sky-500 rounded-full" data-bs-toggle="dropdown" aria-expanded="false" onClick={ () => setDropDownWithCheckBox(!dropDownWithCheckBox) } >
+              Click on me { dropDownWithCheckBox ? <Image src={ ArrowDown } width={'30px'} height={'30px'} />: <Image src={ ArrowUp } width={'30px'} height={'30px'} /> } 
+            </button>
+  
+            <div className={ dropDownWithCheckBox ? " shadow bg-white p-4 rounded mt-2" : "hidden " } >
+              <div className="p-2">
+                { 
+                  dropDownWithCheckBoxArrayText?.map( (item, index) => {
+                    <span className="p-2 bg-slate-600 text-zinc-500" key={ index }> { item } x </span>
+                  } ) 
+                }
+              </div>
+
+              <ul className=" " >
+                <li className="mt-[10px] px-2">  <div className="flex space-x-2 items-center"> <input type="checkbox" name="action1" onChange={ (e) => onHandleChange(e)}  value="人力資源管理" />    <span> 人力資源管理 </span>  </div> </li>
+                <li className="mt-[10px] px-2">  <div className="flex space-x-2 items-center"> <input type="checkbox" name="action2" onChange={ (e) => onHandleChange(e)}  value="住宿" />    <span> 住宿 </span>  </div> </li>
+                <li className="mt-[10px] px-2">  <div className="flex space-x-2 items-center"> <input type="checkbox" name="action3" onChange={ (e) => onHandleChange(e)}  value="保健/美容/健身" />    <span> 保健/美容/健身 </span>  </div> </li>
+                <li className="mt-[10px] px-2">  <div className="flex space-x-2 items-center"> <input type="checkbox" name="action4" onChange={ (e) => onHandleChange(e)}  value="保險" />    <span> 保險 </span>  </div> </li>
+              </ul>
+
+            </div>
+          </div>
 
 
          
