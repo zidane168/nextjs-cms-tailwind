@@ -11,4 +11,17 @@
         @apply border-l-2 border-r-2 border-b-2
          
     }
+
+    .checkbox, .checkbox label, .checkbox input {
+        @apply hover:cursor-pointer
+    }
+
+    .radiobox, .radiobox label, .radiobox input {
+        @apply hover:cursor-pointer
+    }
+
+    .dropdownbutton {
+        @apply hover:border-x-4 hover:border-l-yellow-500  text-sky-500 hover:bg-yellow-100 rounded-r-lg p-2 bg-white
+    }
+
 }
