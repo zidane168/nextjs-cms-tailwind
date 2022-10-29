@@ -20,14 +20,13 @@ export default function MembersView() {
 
   const { language, router } = useTrans();
   const { id } = router.query; 
-  
 
+  // click on checkbox / unclick checkbox on button checkbox
   const onHandleChange = (e) => {
 
     let isChecked = e.target.checked
     let value = e.target.value;
 
- 
     if (isChecked) {
       setDropDownWithCheckBoxArrayText(dropDownWithCheckBoxArrayText.concat(value)) 
 
@@ -41,9 +40,26 @@ export default function MembersView() {
         array.splice(index, 1)
         setDropDownWithCheckBoxArrayText(array) 
       } 
+    }    
+  }
+
+  //remove item on click
+  const onHandleCDelete = (item: String) => {
+    let array = [ ...dropDownWithCheckBoxArrayText ]
+    let index = array.indexOf(item)
+
+    if (index != -1) {
+      array.splice(index, 1)
+      setDropDownWithCheckBoxArrayText(array)
+
+      let cbHR = document.querySelectorAll('#cbHR input')
+      
+      cbHR.forEach( (v, index) => { 
+        if (v.value === item) { // get từng giá trị của input so sánh và unchecked nó là xong
+          v.checked = false;
+        }
+      })
     }
-    
-    console.log(dropDownWithCheckBoxArrayText)
   }
 
 
@@ -262,30 +278,34 @@ export default function MembersView() {
 
           <div className="btn-group mt-10 " id="dropdownbtn">
             <button type="button" className="flex items-center shadow px-4 py-2 bg-white text-sky-500 rounded-full" data-bs-toggle="dropdown" aria-expanded="false" onClick={ () => setDropDownWithCheckBox(!dropDownWithCheckBox) } >
-              Click on me { dropDownWithCheckBox ? <Image src={ ArrowDown } width={'30px'} height={'30px'} />: <Image src={ ArrowUp } width={'30px'} height={'30px'} /> } 
+              Click on me { dropDownWithCheckBox ? <Image src={ ArrowDown } width={'30px'} height={'30px'} /> : <Image src={ ArrowUp } width={'30px'} height={'30px'} /> } 
             </button>
-  
+   
             <div className={ dropDownWithCheckBox ? " shadow bg-white p-4 rounded mt-2" : "hidden " } >
-              <div className="p-2">
+              <div className="p-2 md:columns-4 gap-2 sm:columns-3 xs:columns-2 gap-y-2">
+
                 { 
                   dropDownWithCheckBoxArrayText?.map( (item, index) => {
-                    <span className="p-2 bg-slate-600 text-zinc-500" key={ index }> { item } x </span>
+                    return (
+                      <div className="p-2 bg-slate-200 text-zinc-500 rounded-lg">
+                        <span className="" key={ index }> { item }  </span>
+                        <span className="float-right hover:cursor-pointer" onClick={ () => onHandleCDelete(item) } > x </span>
+                      </div>
+                    )
                   } ) 
                 }
               </div>
 
-              <ul className=" " >
+              <ul className="" id="cbHR">
                 <li className="mt-[10px] px-2">  <div className="flex space-x-2 items-center"> <input type="checkbox" name="action1" onChange={ (e) => onHandleChange(e)}  value="人力資源管理" />    <span> 人力資源管理 </span>  </div> </li>
                 <li className="mt-[10px] px-2">  <div className="flex space-x-2 items-center"> <input type="checkbox" name="action2" onChange={ (e) => onHandleChange(e)}  value="住宿" />    <span> 住宿 </span>  </div> </li>
                 <li className="mt-[10px] px-2">  <div className="flex space-x-2 items-center"> <input type="checkbox" name="action3" onChange={ (e) => onHandleChange(e)}  value="保健/美容/健身" />    <span> 保健/美容/健身 </span>  </div> </li>
                 <li className="mt-[10px] px-2">  <div className="flex space-x-2 items-center"> <input type="checkbox" name="action4" onChange={ (e) => onHandleChange(e)}  value="保險" />    <span> 保險 </span>  </div> </li>
+                <li className="mt-[10px] px-2">  <div className="flex space-x-2 items-center"> <input type="checkbox" name="action3" onChange={ (e) => onHandleChange(e)}  value="买卖" />    <span> 买卖 </span>  </div> </li>
+                <li className="mt-[10px] px-2">  <div className="flex space-x-2 items-center"> <input type="checkbox" name="action4" onChange={ (e) => onHandleChange(e)}  value="管理" />    <span> 管理 </span>  </div> </li>
               </ul>
-
             </div>
           </div>
-
-
-         
 
         </div>
       </div>
