@@ -51,42 +51,45 @@ import useSWR, { SWRConfig } from "swr"
 //     return { props: { endpoint, fetcher } }
 // } 
 
-  
-const fetcher = async() => {
-    const endpoint = `https://api.github.com/users`
-    const res = await axios.get(endpoint) 
-    // console.log(res)
-    return await res.data
-}
- 
-export default function Githubs(   ) {
- 
+
+// const getUsers = async(since: Number) => {
+
+//     let endpoint = `https://api.github.com/users`
+//     if (since != 0) {
+//         endpoint = `https://api.github.com/users?since=${Number}`
+//     } 
+
+//     const res = await axios.get(endpoint)
+//     return res.data
+// }
+
+
+
+export default function Githubs( ) {
   
   const { language } = useTrans()
-  const { data,  isValidating  } = useSWR(`https://api.github.com/users`, fetcher)
+  // const { data,  isValidating  } = useSWR(`https://api.github.com/users`, fetcher)
+  // const { data,  isValidating  } = useSWR(`https://api.github.com/users`, getUsers)
+  const [ from, setFrom ] = useState(1)  
 
-  console.log(data,  isValidating )
-
+  const fetcher = async (endpoint: string) => {   //async() => {
+    // let endpoint = `http://localhost:3333/githubs?limit=15&page=${from}`
  
-// use axios
-//    const [ datas, setDatas ] = useState([])
-//    const fetchAPI = async() => {
-//     //const rel = await axios.get(endpoint)
-//     const rel = await fetch(endpoint, "GET")
-//     console.log(rel.data);
-//     // setDatas(rel.data)
-//    }   
-//    useEffect(() => {
-//     fetchAPI() 
-// }, [])
-    
+    const res = await axios.get(endpoint)   
+    console.log(res.data.params.list)
+    return res.data.params.list
+  }
+
+  const { isValidating, data  } = useSWR(`http://localhost:3333/githubs?limit=15&page=${from}`, fetcher)
+  
   return (  
     <>
         <div className="flex flex-wrap mt-40 mb-4">
-            {  isValidating ? "Loading failed " : (!data ? "Loading ..." : "") } 
+ 
+            {  isValidating ? "Validating data" : (!data   ? "Loading ..." : "") } 
         </div> 
 
-        <div className="flex flex-wrap mt-40 mb-4">
+        <div className="flex flex-wrap mt-10 mb-4">
             <h2 className="uppercase font-bold text-theme"> Github Users </h2>
         </div>
 
@@ -95,11 +98,11 @@ export default function Githubs(   ) {
                 
                 <div className="grid lg:grid-cols-8 gap-4 sm:grid-cols-4 xs:grid-cols-2">          
                     {
-                        data && data.map((value, index) => {
+                        !!data?.length  && data?.map((value: string, index: number) => {
                             return (
                                 <div className="p-2 bg-white shadow-lg rounded " key={ value.id }> 
                                 <div className="w-50 h-50">
-                                    <Image src={ value.avatar_url } width={'100%'} height={'100%'} alt={ value.login } /> 
+                                    <Image src={ "http://localhost:3333/" + value.githubImages[0].myFiles[0].path } width={'100%'} height={'100%'} alt={ value.login } /> 
                                 </div>
                                 <div> Login: { value.login }   </div>
                                 <div>
@@ -111,15 +114,14 @@ export default function Githubs(   ) {
                                     Node:  <span className="text-xs font-bold"> { value.node_id }   </span>
                                 </div>
                             </div>
-                            )
-                            
+                            ) 
                         })
                     }
             
                 </div>
 
                 <div className="mt-4 text-center" > 
-                    <button className=" rounded px-6 py-2 bg-theme text-white uppercase"> Load more ... </button>
+                    <button className=" rounded px-6 py-2 bg-theme text-white uppercase" onClick={ () => setFrom(from + 1)   } > Load more ... </button>
                 </div>
             </div>
         </div>  

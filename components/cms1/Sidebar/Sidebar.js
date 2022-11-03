@@ -26,7 +26,7 @@ export default function Sidebar() {
               href="#pablo"
               className="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
             >
-              Project name
+              ACB
             </a>
           </Link>
           {/* User */}
@@ -167,7 +167,7 @@ export default function Sidebar() {
                     href="#pablo"
                     className={
                       "text-xs uppercase py-3 font-bold block " +
-                      (router.pathname.indexOf("/admin/github") !== -1
+                      (router.pathname.includes("/admin/github") && router.pathname.indexOf("/admin/github2") === -1
                         ? "text-lightBlue-500 hover:text-lightBlue-600"
                         : "text-blueGray-700 hover:text-blueGray-500")
                     }
@@ -175,12 +175,37 @@ export default function Sidebar() {
                     <i
                       className={
                         "fas fa-map-marked mr-2 text-sm " +
-                        (router.pathname.indexOf("/admin/github") !== -1
+                        (router.pathname.includes("/admin/github") && router.pathname.indexOf("/admin/github2") === -1
                           ? "opacity-75"
                           : "text-blueGray-300")
                       }
                     ></i>{" "}
-                    Github Users
+                    Github (Pagination)
+                  </a>
+                </Link>
+              </li>
+
+
+              <li className="items-center">
+                <Link href="/admin/github2">
+                  <a
+                    href="#pablo"
+                    className={
+                      "text-xs uppercase py-3 font-bold block " +
+                      (router.pathname.includes("/admin/github2") 
+                        ? "text-lightBlue-500 hover:text-lightBlue-600"
+                        : "text-blueGray-700 hover:text-blueGray-500")
+                    }
+                  >
+                    <i
+                      className={
+                        "fas fa-map-marked mr-2 text-sm " +
+                        (router.pathname.includes("/admin/github2")  
+                          ? "opacity-75"
+                          : "text-blueGray-300")
+                      }
+                    ></i>{" "}
+                    Github (Load More)
                   </a>
                 </Link>
               </li>

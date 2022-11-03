@@ -20,7 +20,7 @@ export default function FooterAdmin() {
             </div>
             <div className="w-full md:w-8/12 px-4">
               <ul className="flex flex-wrap list-none md:justify-end  justify-center">
-                <li>
+                <li key={ 1 }>
                   <a
                     target="_blank"
                     href="https://learn-tech-tips.blogspot.com/"
