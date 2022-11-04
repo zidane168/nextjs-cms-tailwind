@@ -13,7 +13,7 @@ import axios from "axios"
 import useSWR, { SWRConfig } from "swr"
 import VButton from "../../../components/VButton" 
 import VPagination from "../../../components/VPagination"
- 
+import VPagination2 from "../../../components/VPagination2"
 
 // https://swr.vercel.app/examples/ssr SSR SWR
   
@@ -30,9 +30,7 @@ export default function GithubAdvance( ) {
     } 
 
     const { data, error  } = useSWR(`http://localhost:3333/githubs?limit=${LIMIT}&page=${page}`, fetcher)
-
-    console.log("data.list = ", data ? data.list : null)
-    console.log("data.count = ", data ? data.count : null)
+ 
 
     if (!data) {
         return null;
@@ -44,11 +42,13 @@ export default function GithubAdvance( ) {
                 <h2 className="uppercase font-bold text-theme"> Demo (Pagination Advance) </h2>  
             </div>
  
-            <VPagination  page={ page }  setPage={ setPage }  total={ data ? data.count : 0 }  limit={ LIMIT } /> 
-
-            <div className="mt-2 text-center space-x-2" > 
-                Page { page } of { data ? Math.ceil(data.count / LIMIT) : 0 } / showing { data && data.list ? data.list.length : 0 } record(s) out of { data ? data.count : 0 }  total
-            </div> 
+            <VPagination2 
+                page={ page }  
+                setPage={ setPage }  
+                total={ data ? data.count : 0 }  
+                list={ data ? data.list : null }
+                limit={ LIMIT }  
+            />  
 
             <div className="flex flex-wrap mt-2 ">
                 <div className="w-full mb-12 px-4 border shadow rounded p-4">
