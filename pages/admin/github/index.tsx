@@ -65,22 +65,32 @@ import useSWR, { SWRConfig } from "swr"
 
 
 
-export default function Githubs( ) {
-  
-  const { language } = useTrans()
-  // const { data,  isValidating  } = useSWR(`https://api.github.com/users`, fetcher)
-  // const { data,  isValidating  } = useSWR(`https://api.github.com/users`, getUsers)
-  const [ from, setFrom ] = useState(1)  
 
-  const fetcher = async (endpoint: string) => {   //async() => {
-    // let endpoint = `http://localhost:3333/githubs?limit=15&page=${from}`
- 
-    const res = await axios.get(endpoint)   
-    console.log(res.data.params.list)
+export default function Github( ) {
+  
+  const { language } = useTrans()  
+
+  const [ pageIndex, setPageIndex ] = useState(1)
+  const LIMIT: number = 15
+
+  const fetcher = async (endpoint: string) => {     
+    const res = await axios.get(endpoint)    
     return res.data.params.list
   }
 
-  const { isValidating, data  } = useSWR(`http://localhost:3333/githubs?limit=15&page=${from}`, fetcher)
+  const onHandlePrevious = () => { 
+    if (pageIndex > 1) {
+        setPageIndex(pageIndex - 1)
+    }
+  }
+
+  const onHandleNext = () => {  
+    setPageIndex(pageIndex + 1) 
+  }
+
+  const { isValidating, data  } = useSWR(`http://localhost:3333/githubs?limit=${LIMIT}&page=${pageIndex}`, fetcher)
+
+  // const isReachingEnd = ( data && data[data.length - 1]?.length < LIMIT )
   
   return (  
     <>
@@ -89,8 +99,17 @@ export default function Githubs( ) {
             {  isValidating ? "Validating data" : (!data   ? "Loading ..." : "") } 
         </div> 
 
-        <div className="flex flex-wrap mt-10 mb-4">
-            <h2 className="uppercase font-bold text-theme"> Github Users </h2>
+        <div className=" mt-2 mb-4">
+            <h2 className="uppercase font-bold text-theme"> Github Users </h2> 
+            <p> Page: { pageIndex }, showing { LIMIT } record(s) </p>  
+        </div>
+
+        <div className="mt-2 text-center space-x-2" > 
+            <button className=" rounded px-6 py-2 bg-theme hover:bg-sky-600 focus:outline-none text-white uppercase" onClick={ () => onHandlePrevious() } > Previous </button>
+ 
+            <button className="disabled rounded px-6 py-2 bg-theme hover:bg-sky-600 focus:outline-none  text-white uppercase disabled:opacity-50" 
+                 
+                onClick={ () => onHandleNext() } > Next </button>
         </div>
 
         <div className="flex flex-wrap mt-2 ">
@@ -117,16 +136,12 @@ export default function Githubs( ) {
                             ) 
                         })
                     }
-            
                 </div>
 
-                <div className="mt-4 text-center" > 
-                    <button className=" rounded px-6 py-2 bg-theme text-white uppercase" onClick={ () => setFrom(from + 1)   } > Load more ... </button>
-                </div>
             </div>
         </div>  
     </>
   );
 }
 
-Githubs.layout = Admin; // left sidebar
+Github.layout = Admin; // left sidebar

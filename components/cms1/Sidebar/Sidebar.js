@@ -180,10 +180,35 @@ export default function Sidebar() {
                           : "text-blueGray-300")
                       }
                     ></i>{" "}
-                    Github (Pagination)
+                    Github (Pagination basic)
                   </a>
                 </Link>
               </li>
+
+              <li className="items-center">
+                <Link href="/admin/pagination-advance">
+                  <a
+                    href="#"
+                    className={
+                      "text-xs uppercase py-3 font-bold block " +
+                      (router.pathname.includes("/admin/pagination-advance") 
+                        ? "text-lightBlue-500 hover:text-lightBlue-600"
+                        : "text-blueGray-700 hover:text-blueGray-500")
+                    }
+                  >
+                    <i
+                      className={
+                        "fas fa-map-marked mr-2 text-sm " +
+                        (router.pathname.includes("/admin/pagination-advance") 
+                          ? "opacity-75"
+                          : "text-blueGray-300")
+                      }
+                    ></i>{" "}
+                    Demo (Pagination advance)
+                  </a>
+                </Link>
+              </li>
+
 
 
               <li className="items-center">

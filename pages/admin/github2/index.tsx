@@ -18,12 +18,13 @@ import useSWRInfinite from "swr/infinite";
 // its return value will be accepted by `fetcher`.
 // If `null` is returned, the request of that page won't start.
 
-export default function Githubs() {
-  const { language } = useTrans(); 
+export default function Github2() {
+  const { language } = useTrans();  
 
   const fetcher = async (url: String) => {  
     const res = await axios.get(url);  
     return res.data.params.list
+    
   };
 
   const onHandleClickAddMore = () => {
@@ -33,7 +34,7 @@ export default function Githubs() {
   const { data, error, mutate, size, setSize, isValidating } = useSWRInfinite(
     (index) => `http://localhost:3333/githubs?limit=3&page=${index + 1}`,
     fetcher
-  ); 
+  );  
  
   const datas = data ? [].concat(...data) : []
   const isLoadingInitialData = !data
@@ -54,6 +55,7 @@ export default function Githubs() {
           <div className="grid lg:grid-cols-8 gap-4 sm:grid-cols-4 xs:grid-cols-2">
             { 
                 !!datas?.length  && datas?.map((value: string, index: number) => {
+                
                   return (
                       <div className="p-2 bg-white shadow-lg rounded " key={ value.id }> 
                       <div className="w-50 h-50">
@@ -89,4 +91,4 @@ export default function Githubs() {
   );
 }
 
-Githubs.layout = Admin; // left sidebar
+Github2.layout = Admin; // left sidebar
