@@ -480,6 +480,9 @@ export default function MembersView() {
             <button className="absolute right-2 top-1.5 px-3 py-1 bg-amber-400 rounded-full text-white"> Search </button>
           </div>
 
+          <div className="mt-2">
+            <button className="before:block transition-all ease-in-out  delay-150 hover:bg-gradient-to-r from-yellow-500 z-0 outline outline-orange-500 px-4 py-2 rounded-full bg-white"> Register Now -> </button>
+          </div>
 
         </div>
       </div>
@@ -488,3 +491,17 @@ export default function MembersView() {
 }
 
 MembersView.layout = Admin; // left sidebar
+
+
+// position: absolute;
+// content: "";
+// height: 100%;
+// width: 0;
+// top: 0;
+// left: 0;
+// background-color: red;
+// z-index: -1;
+// -webkit-transition: .3s;
+// -o-transition: .3s;
+// transition: .3s; 
+// border-radius: 50px;
