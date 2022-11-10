@@ -460,7 +460,6 @@ export default function MembersView() {
             </div>
           </div> {/* checkbox 2 */}
 
-
           <div className="mt-4 relative">
             <input className="px-12 rounded-full w-full " type="text" placeholder="Input Search Text Here" /> 
             <div className="absolute top-1 left-3 rounded-full hover:cursor-pointer" >
@@ -475,13 +474,39 @@ export default function MembersView() {
                   <Image src="/images/baby.png" alt="monkey" width={'30px'} height={'30px'} alt="monkey" />
                 </div>
               </div>
-            </div>
-
+            </div> 
             <button className="absolute right-2 top-1.5 px-3 py-1 bg-amber-400 rounded-full text-white"> Search </button>
           </div>
 
           <div className="mt-2">
-            <button className="before:block transition-all ease-in-out  delay-150 hover:bg-gradient-to-r from-yellow-500 z-0 outline outline-orange-500 px-4 py-2 rounded-full bg-white"> Register Now -> </button>
+            <button className="hover:duration-100 delay-150 hover:bg-gradient-to-r from-yellow-500 z-0 outline outline-orange-500 px-4 py-2 rounded-full bg-white"> Register Now -> </button>
+          </div>
+
+
+
+          <div className="mt-4 relative w-max group rounded-full flex items-center">
+            <div className="w-0 h-0 group-hover:w-full group-hover:h-full transition-all transform-gpu transform duration-500 rounded-full absolute left-0 bg-orange-500">
+
+            </div>
+
+            <button className="px-4 h-12 rounded-full border-2 border-orange group-hover:text-white relative z-10 transition-all duration-500">
+              Register Now 
+            </button>
+          </div>
+
+
+          <div className="mt-4 relative w-max group rounded-full flex items-center">
+            <div className="w-0 h-0 group-hover:w-full group-hover:h-full transition-all  transform-gpu transform duration-500 rounded-full absolute left-0 bg-orange-500 hover:z-20">
+
+            </div>
+
+            <button className="px-4 h-12 flex items-center rounded-full border-2 bg-sky-300  border-sky-500 group-hover:text-white relative z-10 transition-all duration-500">
+              <div>
+                Register Now 
+              </div>
+
+              <div> <Image src={ ArrowUp } width={'20px'} height={'20px'} /> </div>
+            </button>
           </div>
 
         </div>
