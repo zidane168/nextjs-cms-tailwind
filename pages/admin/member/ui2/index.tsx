@@ -1,7 +1,9 @@
 import FormGrid from '../../../../components/tailwind/FormGrid';
 import Head from 'next/head'
+import Admin from '../../../../layouts/Admin';
+import Modal from '../../../../components/tailwind/Modal';
 
-export default function MembersUI() {
+export default function MembersUI2() {
        
     return (
         <>
@@ -12,6 +14,9 @@ export default function MembersUI() {
                 </Head>
             </div>
             <FormGrid />
+            {/* <Modal /> */}
         </>
     )
 }
+
+MembersUI2.layout = Admin; // left sidebar
