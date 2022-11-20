@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import Head from 'next/head'
 
 // layout for page
 
@@ -33,6 +33,12 @@ export default function GithubAdvance( ) {
     
     return (  
         <>
+          <div>
+        <Head>
+          <title> Pagination Advance </title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+      </div>
             <div className="mt-40 mb-4">
                 <h2 className="uppercase font-bold text-theme"> Demo (Pagination Advance) </h2>  
             </div>

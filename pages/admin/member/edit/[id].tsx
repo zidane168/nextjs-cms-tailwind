@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Head from 'next/head'
 
 import React, { useState } from "react";
 
@@ -162,6 +163,12 @@ export default function MembersView() {
 
   return (
     <>
+      <div>
+        <Head>
+          <title> Member Edit </title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+      </div>
       <div className="flex flex-wrap mt-40 mb-4">
         <h2 className="uppercase font-bold text-theme"> Members Edit </h2>
       </div>

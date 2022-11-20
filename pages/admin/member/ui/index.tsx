@@ -1,7 +1,7 @@
 
-import { useState } from 'react'
 import  Image from 'next/image' 
 
+import Head from 'next/head'
 import Search from "/public/images/search.svg";
 import Folder from "/public/images/folder.svg";
 import AddNewFile from "/public/images/add-new-file.svg";
@@ -13,6 +13,12 @@ export default function MembersUI() {
        
     return (
         <>
+            <div>
+                <Head>
+                    <title> Member UI </title>
+                    <link rel="icon" href="/favicon.ico" />
+                </Head>
+            </div>
             <div className="mt-2 p-6 rounded bg-orange-500 text-white max-w-sm">
                 Welcome to Zidane - Learn Tech Tips Channel
             </div>

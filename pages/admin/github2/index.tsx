@@ -1,5 +1,6 @@
 
 import React from "react";
+import Head from 'next/head'
 
 // layout for page
 
@@ -43,6 +44,12 @@ export default function Github2() {
 
   return (
     <>
+      <div>
+        <Head>
+          <title> Github2 </title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+      </div>
       <div className="flex flex-wrap mt-40 mb-4">
         {isLoadingInitialData ? "Loading" : ""}
       </div>

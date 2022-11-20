@@ -6,13 +6,19 @@ import Image from "next/image";
 
 import Admin from "../../../../layouts/Admin.js";
 import useTrans from "../../../hooks/useTrans";
-
+import Head from 'next/head'
 export default function MembersView() {
   const { language, router } = useTrans();
   const { id } = router.query;
 
   return (
     <>
+      <div>
+        <Head>
+          <title> Member UI View </title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+      </div>
       <div className="flex flex-wrap mt-40 mb-4">
         <h2 className="uppercase font-bold text-theme"> Members View </h2>
       </div>
@@ -61,9 +67,15 @@ export default function MembersView() {
               <tr>
                 <th className="header rounded"> Link </th>
                 <td className=" border-2 border-theme-2 w-full rounded px-2 space-x-2">
-                 <Link href="/admin/member/"> 
-                  <a href="/admin/member/" className="text-theme hover:underline hover:underline-offset-1 "> Link to Member </a>
-                </Link> 
+                  <Link href="/admin/member/">
+                    <a
+                      href="/admin/member/"
+                      className="text-theme hover:underline hover:underline-offset-1 "
+                    >
+                      {" "}
+                      Link to Member{" "}
+                    </a>
+                  </Link>
                 </td>
               </tr>
             </thead>
@@ -118,29 +130,30 @@ export default function MembersView() {
                 alt="image"
               />
             </div>
-            <div  className="flex-1 text-justify">
+            <div className="flex-1 text-justify">
               Text description here, Text description here, Text description
               here, Text description here, Text description here, Text
-              description here, Text description here, Text description here, Text description
+              description here, Text description here, Text description here,
+              Text description here, Text description here, Text description
               here, Text description here, Text description here, Text
-              description here, Text description here, Text description here, Text description
+              description here, Text description here, Text description here,
+              Text description here, Text description here, Text description
               here, Text description here, Text description here, Text
-              description here, Text description here, Text description here, Text description
+              description here, Text description here, Text description here,
+              Text description here, Text description here, Text description
               here, Text description here, Text description here, Text
-              description here, Text description here, Text description here, Text description
+              description here, Text description here, Text description here,
+              Text description here, Text description here, Text description
               here, Text description here, Text description here, Text
-              description here, Text description here, Text description here, Text description
+              description here, Text description here, Text description here,
+              Text description here, Text description here, Text description
               here, Text description here, Text description here, Text
-              description here, Text description here, Text description here, Text description
-              here, Text description here, Text description here, Text
-              description here, Text description here, Text description here, Text description
-              here, Text description here, Text description here, Text
-              description here,
+              description here, Text description here, Text description here,
             </div>
           </div>
 
           <div className="flex flex-row items-center space-x-4">
-            <div  >
+            <div>
               <Image
                 src="/images/monkey.png"
                 width={"300px"}
@@ -148,7 +161,7 @@ export default function MembersView() {
                 alt="image"
               />
             </div>
-            <div  className="flex-1 text-justify">Text description here</div>
+            <div className="flex-1 text-justify">Text description here</div>
           </div>
         </div>
       </div>

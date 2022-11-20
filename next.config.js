@@ -2,7 +2,7 @@
 
 const nextConfig = {
   i18n: {
-    locales: ['en', 'vi', 'zho', 'chi'],
+    locales: ['en', 'zho'],
     defaultLocale: 'en',
   },
   reactStrictMode: true,
