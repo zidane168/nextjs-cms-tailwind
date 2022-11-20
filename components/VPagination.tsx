@@ -1,7 +1,7 @@
 import VButton from "./VButton";
 import useTrans from "./../pages/hooks/useTrans"
 
-const VPagination = ( { page, setPage, total, limit, list } ) => {
+const VPagination = ( { page, setPage, total, limit, list }: any ) => {
    
   const { language } = useTrans()  
 

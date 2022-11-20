@@ -1,7 +1,4 @@
-import Link from "next/link";
-
-import fetch from 'unfetch'
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 
 // layout for page
@@ -10,9 +7,7 @@ import Admin from "../../../layouts/Admin.js";
 import useTrans from "../../hooks/useTrans"
 import Image from "next/image"
 import axios from "axios"
-import useSWR, { SWRConfig } from "swr"
-import VButton from "../../../components/VButton" 
-import VPagination from "../../../components/VPagination"
+import useSWR from "swr"
 import VPagination2 from "../../../components/VPagination2"
 
 // https://swr.vercel.app/examples/ssr SSR SWR
@@ -55,7 +50,7 @@ export default function GithubAdvance( ) {
                     
                     <div className="grid lg:grid-cols-8 gap-4 sm:grid-cols-4 xs:grid-cols-2">          
                         {
-                            !!data.list?.length  && data.list?.map((value: string, index: number) => {
+                            !!data.list?.length  && data.list?.map((value: any, index: number) => {
                                 return (
                                     <div className="p-2 bg-white shadow-lg rounded " key={ value.id }> 
                                     <div className="w-50 h-50">

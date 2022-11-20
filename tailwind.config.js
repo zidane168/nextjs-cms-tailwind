@@ -9,6 +9,9 @@ module.exports = {
     extend: {
       extend: {
         animation: ["hover"],
+        padding: {
+          '-2px': '-2px',
+        }
       },
       colors: {
         "vilh-blue": "#00F",

@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-const VLink = ( {  href, name, active } ) => {
+const VLink = ( {  href, name, active }: any ) => {
 
     const defaultClass = "rounded px-6 py-2 bg-theme text-white uppercase" 
 

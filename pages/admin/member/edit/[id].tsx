@@ -1,26 +1,26 @@
-import Link from "next/link";
 import Image from "next/image";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import ArrowDown from "/public/images/arrow-down.svg";
 import ArrowUp from "/public/images/arrow-up.svg";
 
-// layout for page
+// layout htmlFor page
  
 import Admin from "../../../../layouts/Admin.js";
 import useTrans from "../../../hooks/useTrans";
+
 
 export default function MembersView() {
   const [ dropDown, setDropDown ] = useState(false);
   const [ dropDownButtonText, setDropDownButtonText] = useState("");
 
-  const [ dropDownWithCheckBox, setDropDownWithCheckBox ] = useState(false);
-  const [ dropDownWithCheckBoxArrayText, setDropDownWithCheckBoxArrayText ] = useState([]); 
-  const [ checkedUncheckedAll, setCheckedUncheckedAll ] = useState(true); /// show checked all button
+  const [ dropDownWithCheckBox, setDropDownWithCheckBox ] = useState<boolean>(false);
+  const [ dropDownWithCheckBoxArrayText, setDropDownWithCheckBoxArrayText ] = useState<string[]>([]); 
+  const [ checkedUncheckedAll, setCheckedUncheckedAll ] = useState<boolean>(true); /// show checked all button
 
-  const [ dropDownWithCheckBox2, setDropDownWithCheckBox2 ] = useState(false);
-  const [ dropDownWithCheckBox2ArrayText, setDropDownWithCheckBox2ArrayText ] = useState([]); 
+  const [ dropDownWithCheckBox2, setDropDownWithCheckBox2 ] = useState<boolean>(false);
+  const [ dropDownWithCheckBox2ArrayText, setDropDownWithCheckBox2ArrayText ] = useState<string[]>([]); 
   const [ childArrow1, setChildArrow1 ] = useState(false);
 
   // search
@@ -34,16 +34,16 @@ export default function MembersView() {
 
   // -------------- checkbox 1 cbHR ---------------
   // click on checkbox / unclick checkbox on button checkbox
-  const onHandleChange = (e) => {
+  const onHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
-    let isChecked = e.target.checked
+    let isChecked: boolean = e.target.checked
     let value = e.target.value;
 
-    if (isChecked) {
+    if (isChecked) { 
       setDropDownWithCheckBoxArrayText(dropDownWithCheckBoxArrayText.concat(value)) 
 
     } else {
- 
+  
       let array = [ ...dropDownWithCheckBoxArrayText ]
       let index = array.indexOf(value)
 
@@ -55,7 +55,7 @@ export default function MembersView() {
   }
 
   //remove item on click
-  const onHandleCDelete = (item: String) => {
+  const onHandleCDelete = (item: string) => {
     let array = [ ...dropDownWithCheckBoxArrayText ]
     let index = array.indexOf(item)
 
@@ -64,7 +64,7 @@ export default function MembersView() {
       setDropDownWithCheckBoxArrayText(array)
       
       let cbHR = document.querySelectorAll('#cbHR input')
-      cbHR.forEach( (v, index) => { 
+      cbHR.forEach( (v: any, index) => { 
         if (v.value === item) { // get từng giá trị của input so sánh và unchecked nó là xong
           v.checked = false;
         }
@@ -74,11 +74,11 @@ export default function MembersView() {
 
   const onHandleCheckedUnCheckedAll = () => {
     
-    let array = [];      
-    let cbHR = document.querySelectorAll('#cbHR input')
+    let array:string[] = [];      
+    let cbHR: any  = document.querySelectorAll('#cbHR input')
 
     if (checkedUncheckedAll) { 
-      cbHR.forEach((v, index) => {
+      cbHR.forEach((v: any) => {
         v.checked = true;   // checked all      
 
         // add all
@@ -87,7 +87,7 @@ export default function MembersView() {
       })  
 
     } else {
-      cbHR.forEach((v, index) => {
+      cbHR.forEach((v: any) => {
         v.checked = false;   // unchecked all      
       })  
 
@@ -99,14 +99,14 @@ export default function MembersView() {
 
   // ------------- checkbox cbHR2 -------------- 
 
-  const onClickChildArrow1 = (e: Event) => { 
+  const onClickChildArrow1 = (e: React.MouseEvent) => { 
     e.preventDefault(); 
     setChildArrow1(!childArrow1) 
   }
 
-  const onHandleChange2 = (e) => {
-    let isChecked = e.target.checked;
-    let value = e.target.value
+  const onHandleChange2 = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let isChecked: boolean = e.target.checked;
+    let value:string = e.target.value as string
 
     if (isChecked) {
       setDropDownWithCheckBox2ArrayText(dropDownWithCheckBox2ArrayText.concat(value))
@@ -125,7 +125,7 @@ export default function MembersView() {
   //   let cbHR2 = document.querySelectorAll('#cbHR2 input')
 
   //   let newArray = [];
-  //   cbHR2.forEach((v, index) => {
+  //   cbHR2.htmlForEach((v, index) => {
 
   //     if (v.checked) {
   //       newArray.push(v.value)
@@ -135,10 +135,10 @@ export default function MembersView() {
   //   setDropDownWithCheckBox2ArrayText(newArray)
   }
 
-  const onHandleCDelete2 = (item: String) => {
+  const onHandleCDelete2 = (item: string) => {
     let cbHR2 = document.querySelectorAll('#cbHR2 input')
 
-    cbHR2.forEach( (v, index) => {
+    cbHR2.forEach( (v: any, index) => {
       if (v.value === item) {
         v.checked = false;
 
@@ -153,7 +153,7 @@ export default function MembersView() {
   }
 
   /// search button
-  const onHandleChooseImage = (url: String) => {
+  const onHandleChooseImage = (url: string) => {
 
     setChooseImage(url)
     setShowPrefixSearch(false);
@@ -168,7 +168,7 @@ export default function MembersView() {
       <div className="flex flex-wrap mt-2 ">
         <div className="w-full mb-12 px-4 border shadow rounded p-4">
           <div className="">
-            <label className="my-0.5" for="username">
+            <label className="my-0.5" htmlFor="username">
               Username:
             </label>
             <input
@@ -180,7 +180,7 @@ export default function MembersView() {
           </div>
 
           <div className="mt-2">
-            <label className="my-0.5" for="password">
+            <label className="my-0.5" htmlFor="password">
               Password:
             </label>
             <input
@@ -195,14 +195,14 @@ export default function MembersView() {
             <label className="my-0.5"> Gender </label>
             <div className="  p-2  columns-2">
               <div className="radiobox  space-x-2">
-                <label className=" " for="male">
+                <label className=" " htmlFor="male">
                   Male:
                 </label>
                 <input id="male" type="radio" name="gender" value="1" />
               </div>
 
               <div className="radiobox  space-x-2">
-                <label className=" " for="female">
+                <label className=" " htmlFor="female">
                   Female:
                 </label>
                 <input id="female" type="radio" name="gender" value="2" />
@@ -215,11 +215,11 @@ export default function MembersView() {
             {/*
               from md (max-width: 768px) trở lên: 4 cột,
               from sm (max-width: 640px;) trở lên: 3 cột,
-              form xs (max-width: 320px;) <- new define on tailwind.config.js trở lên: 2 cột
+              htmlForm xs (max-width: 320px;) <- new define on tailwind.config.js trở lên: 2 cột
             */}
             <div className="  p-2 mx-auto md:columns-4 sm:columns-3 xs:columns-2 ">
               <div className="checkbox space-x-2">
-                <label className=" " for="cakephp">
+                <label className=" " htmlFor="cakephp">
                   CakePHP
                 </label>
                 <input
@@ -231,7 +231,7 @@ export default function MembersView() {
               </div>
 
               <div className="checkbox space-x-2">
-                <label className="" for="nestjs">
+                <label className="" htmlFor="nestjs">
                   NestJS
                 </label>
                 <input
@@ -244,7 +244,7 @@ export default function MembersView() {
               </div>
 
               <div className="checkbox space-x-2">
-                <label className="" for="nextjs">
+                <label className="" htmlFor="nextjs">
                   NextJS
                 </label>
                 <input
@@ -256,7 +256,7 @@ export default function MembersView() {
               </div>
 
               <div className="checkbox space-x-2">
-                <label className="" for="laravel">
+                <label className="" htmlFor="laravel">
                   Laravel
                 </label>
                 <input
@@ -268,7 +268,7 @@ export default function MembersView() {
               </div>
 
               <div className="checkbox space-x-2">
-                <label className=" " for="vue">
+                <label className=" " htmlFor="vue">
                   Vue
                 </label>
                 <input
@@ -280,7 +280,7 @@ export default function MembersView() {
               </div>
 
               <div className="checkbox space-x-2">
-                <label className=" " for="python">
+                <label className=" " htmlFor="python">
                   Python
                 </label>
                 <input
@@ -292,7 +292,7 @@ export default function MembersView() {
               </div>
 
               <div className="checkbox space-x-2">
-                <label className=" " for="csharp">
+                <label className=" " htmlFor="csharp">
                   C#
                 </label>
                 <input
@@ -304,7 +304,7 @@ export default function MembersView() {
               </div>
 
               <div className="checkbox space-x-2">
-                <label className=" " for="cplus">
+                <label className=" " htmlFor="cplus">
                   C++
                 </label>
                 <input
@@ -319,7 +319,7 @@ export default function MembersView() {
           {/* end checkbox */}
 
           {/* <label
-            for="countries"
+            htmlFor="countries"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
           >
             Select an option
@@ -464,14 +464,14 @@ export default function MembersView() {
             <input className="px-12 rounded-full w-full " type="text" placeholder="Input Search Text Here" /> 
             <div className="absolute top-1 left-3 rounded-full hover:cursor-pointer" >
 
-              <Image src={"/images/" + chooseImage} alt="monkey" width={'30px'} height={'30px'} alt="monkey" onClick={ () => setShowPrefixSearch(!showPrefixSearch) } />
+              <Image src={"/images/" + chooseImage} alt="monkey" width={'30px'} height={'30px'}  onClick={ () => setShowPrefixSearch(!showPrefixSearch) } />
 
               <div className={ showPrefixSearch ? "mt-2 -ml-2 p-2 bg-white rounded w-15 flex flex-col space-y-2" : "hidden"}>
                 <div className="hover:ring-2" onClick={ () => onHandleChooseImage('monkey.png') }>
-                  <Image src="/images/monkey.png" alt="monkey" width={'30px'} height={'30px'} alt="monkey" />
+                  <Image src="/images/monkey.png" alt="monkey" width={'30px'} height={'30px'}  />
                 </div>
                 <div className="hover:ring-2" onClick={ () => onHandleChooseImage('baby.png') }>
-                  <Image src="/images/baby.png" alt="monkey" width={'30px'} height={'30px'} alt="monkey" />
+                  <Image src="/images/baby.png" alt="monkey" width={'30px'} height={'30px'}  />
                 </div>
               </div>
             </div> 
@@ -479,13 +479,13 @@ export default function MembersView() {
           </div>
 
           <div className="mt-2">
-            <button className="hover:duration-100 delay-150 hover:bg-gradient-to-r from-yellow-500 z-0 outline outline-orange-500 px-4 py-2 rounded-full bg-white"> Register Now -> </button>
+            <button className="hover:duration-100 delay-150 hover:bg-gradient-to-r from-yellow-500 z-0 outline outline-orange-500 px-4 py-2 rounded-full bg-white"> Register Now $gt; </button>
           </div>
 
 
 
           <div className="mt-4 relative w-max group rounded-full flex items-center">
-            <div className="w-0 h-0 group-hover:w-full group-hover:h-full transition-all transform-gpu transform duration-500 rounded-full absolute left-0 bg-orange-500">
+            <div className="w-0 h-0 group-hover:w-full group-hover:h-full transition-all transhtmlForm-gpu transhtmlForm duration-500 rounded-full absolute left-0 bg-orange-500">
 
             </div>
 
@@ -496,7 +496,7 @@ export default function MembersView() {
 
 
           <div className="mt-4 relative w-max group rounded-full flex items-center">
-            <div className="w-0 h-0 group-hover:w-full group-hover:h-full transition-all  transform-gpu transform duration-500 rounded-full absolute left-0 bg-orange-500 hover:z-20">
+            <div className="w-0 h-0 group-hover:w-full group-hover:h-full transition-all  transhtmlForm-gpu transhtmlForm duration-500 rounded-full absolute left-0 bg-orange-500 hover:z-20">
 
             </div>
 

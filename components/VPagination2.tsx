@@ -2,7 +2,7 @@ import VButton from "./VButton";
 import useTrans from "./../pages/hooks/useTrans"
 import VLink from "./VLink";
 
-const VPagination2 = ( { page, setPage, total, limit, list } ) => {
+const VPagination2 = ( { page, setPage, total, limit, list }: any) => {
    
   const { language } = useTrans()  
 

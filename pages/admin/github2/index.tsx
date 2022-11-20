@@ -1,7 +1,5 @@
-import Link from "next/link";
 
-import fetch from "unfetch";
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 // layout for page
 
@@ -9,7 +7,6 @@ import Admin from "../../../layouts/Admin.js";
 import useTrans from "../../hooks/useTrans";
 import Image from "next/image";
 import axios from "axios";
-import useSWR, { SWRConfig } from "swr";
 import useSWRInfinite from "swr/infinite";
 
 // https://swr.vercel.app/examples/ssr SSR SWR
@@ -23,7 +20,7 @@ export default function Github2() {
 
   const LIMIT: number = 10
 
-  const fetcher = async (url: String) => {  
+  const fetcher = async (url: string) => {  
     const res = await axios.get(url);  
      return res.data.params.list   
   };
@@ -58,7 +55,7 @@ export default function Github2() {
         <div className="w-full mb-12 px-4 border shadow rounded p-4">
           <div className="grid lg:grid-cols-8 gap-4 sm:grid-cols-4 xs:grid-cols-2">
             { 
-                !!datas?.length  && datas?.map((value: string, index: number) => {
+                !!datas?.length  && datas?.map((value: any, index: number) => {
                 
                   return (
                     <div className="p-2 bg-white shadow-lg rounded " key={ value.id }> 
