@@ -28,8 +28,8 @@ export default function MembersView() {
   const [ showPrefixSearch, setShowPrefixSearch ] = useState(false)
   const [ chooseImage, setChooseImage ] = useState('monkey.png')
 
-  const { language, router } = useTrans();
-  const { id } = router.query; 
+  // const { router } = useTrans();
+  // const { id } = router.query; 
 
   // get all cbHR input
 

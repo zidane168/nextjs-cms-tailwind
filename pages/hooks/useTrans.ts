@@ -6,7 +6,8 @@ const useTrans = () => {
     const { asPath, locale } = useRouter() 
     const router = useRouter() 
     const language = locale === 'zho' ? zho : en 
-    return { language, asPath, locale, router }
+    const translate = { language, asPath, locale, router }
+    return translate
 }
 
 export default useTrans
