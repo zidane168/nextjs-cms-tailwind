@@ -5,8 +5,7 @@ import Head from 'next/head'
 import CardTable from "../../../components/cms1/Cards/CardTable.js";
 
 // layout for page
-import Admin from "../../../layouts/Admin.js";
-import Ta from "../../../components/tailwind/Table.jsx";
+import Admin from "../../../layouts/Admin.js"; 
 
 export default function Tables() {
   return (
@@ -26,8 +25,7 @@ export default function Tables() {
           <CardTable color="dark" />
         </div>
       </div>
-
-      <Ta />
+ 
     </div>
   );
 }

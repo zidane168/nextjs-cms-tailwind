@@ -5,7 +5,7 @@ import Image from "next/image";
 // layout for page
 
 import Admin from "../../../../layouts/Admin.js";
-import useTrans from "../../../hooks/useTrans";
+import useTrans from "../../../../hooks/useTrans";
 import Head from 'next/head'
 export default function MembersView() {
   const { language, router } = useTrans();

@@ -3,7 +3,7 @@ import React from "react";
 import UserDropdown from "../Dropdowns/UserDropdown.js";
 import Link from "next/link";
 
-import useTrans from "../../../pages/hooks/useTrans";
+import useTrans from "../../../hooks/useTrans";
  
 export default function Navbar() {
   const { language, asPath, locale } = useTrans(); // asPath is current URL,

@@ -3,7 +3,7 @@ import Head from 'next/head'
 
 // layout for page
 import Admin from "../../../layouts/Admin.js";
-import useTrans from "../../hooks/useTrans";
+import useTrans from "../../../hooks/useTrans";
 
 export default function Members() {
   const { language } = useTrans();

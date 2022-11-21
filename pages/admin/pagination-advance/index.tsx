@@ -3,8 +3,7 @@ import Head from "next/head";
 
 // layout for page
 
-import Admin from "../../../layouts/Admin.js";
-import useTrans from "../../hooks/useTrans";
+import Admin from "../../../layouts/Admin.js"; 
 import Image from "next/image";
 import axios from "axios";
 import useSWR from "swr";
@@ -12,8 +11,7 @@ import VPagination2 from "../../../components/VPagination2";
 
 // https://swr.vercel.app/examples/ssr SSR SWR
 
-export default function GithubAdvance() {
-  const { language } = useTrans();
+export default function GithubAdvance() { 
 
   const [page, setPage] = useState(1);
   const LIMIT: number = 15;

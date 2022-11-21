@@ -1,6 +1,5 @@
 import VButton from "./VButton";
-import useTrans from "./../pages/hooks/useTrans"
-import VLink from "./VLink";
+import useTrans from "./../hooks/useTrans"
 
 const VPagination2 = ( { page, setPage, total, limit, list }: any) => {
    
@@ -8,11 +7,7 @@ const VPagination2 = ( { page, setPage, total, limit, list }: any) => {
 
   const goToFirstPage = () => setPage(1);
   
-  const goToLastPage = () => setPage(getLastPage());
-  
-  const incrementPage = () => page < getLastPage() && setPage(page + 1);
-  
-  const decrementPage = () => page > 1 && setPage(page - 1);
+  const goToLastPage = () => setPage(getLastPage()); 
   
   const atFirstPage = () => page === 1;
   

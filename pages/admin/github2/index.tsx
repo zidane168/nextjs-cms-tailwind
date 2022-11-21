@@ -5,7 +5,7 @@ import Head from 'next/head'
 // layout for page
 
 import Admin from "../../../layouts/Admin.js";
-import useTrans from "../../hooks/useTrans";
+import useTrans from "../../../hooks/useTrans";
 import Image from "next/image";
 import axios from "axios";
 import useSWRInfinite from "swr/infinite";

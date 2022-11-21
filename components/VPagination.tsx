@@ -1,5 +1,5 @@
 import VButton from "./VButton";
-import useTrans from "./../pages/hooks/useTrans"
+import useTrans from "./../hooks/useTrans"
 
 const VPagination = ( { page, setPage, total, limit, list }: any ) => {
    

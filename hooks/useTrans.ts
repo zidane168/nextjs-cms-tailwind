@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
-import en from '../../public/lang/en.js'
-import zho from '../../public/lang/zho.js'
+import en from './../public/lang/en.js'
+import zho from './../public/lang/zho.js'
 
 const useTrans = () => {
     const { asPath, locale } = useRouter() 

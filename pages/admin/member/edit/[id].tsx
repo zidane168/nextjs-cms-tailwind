@@ -9,7 +9,6 @@ import ArrowUp from "/public/images/arrow-up.svg";
 // layout htmlFor page
  
 import Admin from "../../../../layouts/Admin.js";
-import useTrans from "../../../hooks/useTrans";
 
 
 export default function MembersView() {
