@@ -7,15 +7,15 @@ export default function sale() {
     <>
       <div>
         <Head>
-          <title> Member Sale </title>
+          <title> Woman long sleeved </title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
       </div>
 
       <div className="flex font-sans p-4 bg-white shadow-lg m-8 rounded-lg max-w-lg">
-        <div className="flex-none w-48 relative">
+      <div className="flex-none w-48 relative">
           <div className="absolute inset-0 w-full h-full object-cover">
-            <Image
+          <Image
               src={WomanLongSleeved}
               alt ="long sleeved"                    
               layout="fill"        
@@ -28,15 +28,15 @@ export default function sale() {
             <h1 className="flex-auto text-lg font-semibold text-slate-900">
               Woman long-sleeved
             </h1>
-            <div className="text-lg font-semibold text-slate-500">$110.00</div>
+            <div className="text-lg font-semibold text-rose-500">$110.00</div>
             <div className="w-full flex-none text-sm font-medium text-slate-700 mt-2">
               In stock
             </div>
           </div>
-          <div className="flex items-baseline mt-4 mb-6 pb-6 border-b border-slate-200">
+          <div className="mt-4 mb-6 pb-6 border-b border-slate-200">
             <div className="space-x-2 flex text-sm">
               <label>
-                <input
+              <input
                   className="sr-only peer"
                   name="size"
                   type="radio"
