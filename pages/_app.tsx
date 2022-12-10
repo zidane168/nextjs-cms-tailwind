@@ -60,7 +60,8 @@ import "../styles/tailwind-2.0.4.css";
 // }
  
 import '../styles/globals.css' 
-import '../styles/menu.css' 
+import '../styles/menu.css'  
+import '../styles/carousel.css'
 
 export async function getStaticProps( ) {
   // ↓add  
