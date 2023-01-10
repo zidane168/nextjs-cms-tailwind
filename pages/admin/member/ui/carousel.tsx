@@ -2,27 +2,34 @@ import LeftArrow from '/public/img/cms1/carousel/left-arrow.svg'
 import RightArrow from '/public/img/cms1/carousel/right-arrow.svg'
 import Head from 'next/head'
 import Image from 'next/image';
+import { useEffect } from 'react'
 
 export default function carousel() {
-  return (
-    <>
-      <Head> 
-        <script>
-        $(document).ready(function() { 
-        let stop = false;
+
+  useEffect(() => { 
+    if (!document) {
+      return;
+    }
+      
+      let stop = false;
         let timer = setInterval(() => {
           if (!stop) {
-            let lists = document.querySelectorAll('.item');
-            document.getElementById('slide').appendChild(lists[0]); 
+            let lists = document.querySelectorAll('.item'); 
+ 
+            document.getElementById('slide').appendChild(lists[0]);  
+           
           } else {
             clearInterval(timer)
           }
           
         }, 6000)
 
-        document.getElementById('next').onclick = function(){
+        document?.getElementById('next').onclick = function(){
           let lists = document.querySelectorAll('.item');
-          document.getElementById('slide').appendChild(lists[0]);
+
+          if (document) {
+            document?.getElementById('slide').appendChild(lists[0]);
+          }
           stop = true;
         }
 
@@ -31,10 +38,14 @@ export default function carousel() {
           document.getElementById('slide').prepend(lists[lists.length - 1]);
           stop = true;
         }
+ 
+ 
+  }, []);
 
-        })
-
-        </script> 
+  return (
+    <>
+      <Head> 
+       
       </Head>
     
       <div className="w-full p-2">

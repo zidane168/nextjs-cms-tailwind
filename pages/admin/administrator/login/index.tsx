@@ -14,6 +14,8 @@ export default function Login() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
       </div>
+      <form action="http://localhost:3000/login">
+        
       <div className="flex  mt-10 justify-center items-center h-screen">
         <div className=" rounded-xl w-2/5 mx-auto border-black m12 p-4 shadow w-xs ">
           <div className="h-40 mb-4 bg-theme text-center flex rounded-lg items-center space-x-2 justify-center">
@@ -44,13 +46,16 @@ export default function Login() {
           </div>
 
           <div className="mt-2 text-center">
-            <button className="rounded bg-theme text-white p-2 px-6">
-              {" "}
-              Login{" "}
+            <button type="submit" className="rounded bg-theme text-white p-2 px-6">
+              
+              Login
             </button>
           </div>
         </div>
       </div>
+
+
+      </form>
     </>
   );
 }
