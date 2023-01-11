@@ -1,12 +1,12 @@
 import create from "zustand"
-
+import { persist } from "zustand/middleware"
   
 interface fruitState {
     fruits: Array<string>; 
     addFruits: (fruit: string) => void;
 }
 
-const useStore = create<fruitState>((set) => ({
+let store = ((set) => ({
     fruits: [], 
 
     // C2 truyen tham so
@@ -14,5 +14,9 @@ const useStore = create<fruitState>((set) => ({
         fruits: [...state.fruits, fruit]
     }))
 }))
+
+store = persist(store, { name: "basket"})
+
+const useStore = create<fruitState>(store)
 
 export default useStore;

@@ -1,12 +1,15 @@
 import useStore from '../../../store/fruits';
 import React, { useRef } from 'react'
 
+// https://blog.openreplay.com/zustand-simple-modern-state-management-for-react
+// with state localstorage
 
 export default function Fruits() {
 
     const inputRef = useRef(); 
 
     const { fruits, addFruits }  = useStore()
+ 
     const addNew = () => {
         addFruits(inputRef.current.value)
         inputRef.current.value = ""
@@ -22,14 +25,16 @@ export default function Fruits() {
                 <button className="p-2 bg-sky-500" onClick={ addNew } > Add a fruit </button> 
             </div>
 
-            <div className="shadow-lg bg-gray-100 w-[500px] mx-auto mt-[20px] p-2">
-                { fruits.map((item, index) => {
-                    return (
-                        <p key={ index }> { item } </p> 
-                    )
-                
-                }) }
-            </div>
+            {fruits.length > 0 && 
+                <div className="shadow-lg bg-gray-100 w-[500px] mx-auto mt-[20px] p-2">
+                    { fruits.map((item, index) => {
+                        return (
+                            <p key={ index }> { item } </p> 
+                        )
+                    
+                    }) }
+                </div>
+            }
         </div>
     )
 }
